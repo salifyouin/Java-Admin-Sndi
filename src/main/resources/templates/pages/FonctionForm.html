@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="/template">
+<head>
+<meta charset="utf-8" />
+<title>Admin | Operateurs</title>
+</head>
+<body>
+<div class="main-content-inner" layout:fragment="content">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a th:href="@{/index}">Accueil</a>
+							</li>
+							<li>
+								<a href="#">Fonction</a>
+							</li>
+							<li class="active">Nouvelle Fonction</li>
+						</ul><!-- /.breadcrumb -->
+					</div>
+					<div class="page-content">
+						<div data-th-replace="Fragments/Fr-setting::setting"><!-- setting containt --></div>
+						<div class="page-header">
+							<h1>Nouvelle Fonction</h1>
+						</div><!-- /.page-header -->
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+										<!-- div.table-responsive -->
+										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                   <div class="panel-body">
+                                   <div class="table-header">
+											Enregistrer d'une nouvelle fonction
+										</div>
+                                     <form th:action="@{SaveFonction}" method="post" th:object="${fonction}">
+                                     <div class="form-group">
+                                     <label class="control-label">Libele:</label>
+                                     <input type="text" th:field="*{fonLibelle}" class="form-control" placeholder="Developpeur d'application"/>
+                                     <span></span>
+                                     </div>
+                                       <div class="form-group">
+                                    <label for="form-field-select-3">Type de fonction</label>
+                                     <div>
+										<select class="chosen-select form-control" id="form-field-select-3" data-placeholder="Choose a State...">
+											<option value="">  </option>
+											<option value="AL">test1</option>
+											<option value="AK">test2</option>
+									        <option value="AZ">test3</option>
+										    <option value="AR">test4</option>
+										</select>
+							        </div>
+                                     <span></span>
+                                     </div>                                  
+                                     <div>
+                                     <button type="submit" class="btn btn-primary pull-right">Enregistre</button>
+                                     </div>
+                                     </form>
+                                   </div>
+                                 </div>
+										<!-- div.dataTables_borderWrap -->
+										<div>
+											
+										</div>
+									</div>
+								</div>								
+								<!-- FIN CONTENU PAGE -->
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+				
+</body>
+</html>

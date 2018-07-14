@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="/template">
+<head>
+<meta charset="utf-8" />
+<title>Admin | Assignation</title>
+</head>
+<body>
+<div class="main-content-inner" layout:fragment="content">
+					<":div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a th:href="@{/index}">Accueil</a>
+							</li>
+
+							<li>
+								<a href="#">Assignations</a>
+							</li>
+							<li class="active">Nouvelle Assignation</li>
+						</ul><!-- /.breadcrumb -->
+					</div>
+
+					<div class="page-content">
+						<div data-th-replace="Fragments/Fr-setting::setting"><!-- setting containt --></div>
+
+						<div class="page-header">
+							<h1>Nouvelle Assignation</h1>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+										<!-- div.table-responsive -->
+										<div class="col-md-12 col-sm-6 col-xs-10 ">
+                                   
+                                    
+								<div class="widget-box">
+									<div class="widget-body">
+									<div class="table-header">
+											        Assignation d'un operateur a une Fonction
+										           </div>
+                                                 </div>
+									  <div class="widget-main">
+									  <div class="panel-body">
+                                                  
+											<div id="fuelux-wizard-container">
+												<div>
+												
+													<ul class="steps">
+													
+														<li data-step="1" class="active">
+															<span class="step">1</span>
+															<span class="title">Information sur l'operateur</span>
+														</li>
+
+														<li data-step="2">
+															<span class="step">2</span>
+															<span class="title">Assignation d'une fonction</span>
+														</li>
+
+														<li data-step="3">
+															<span class="step">3</span>
+															<span class="title">Confirmation</span>
+														</li>
+
+														<li data-step="4">
+															<span class="step">4</span>
+															<span class="title">Fin</span>
+														</li>
+													</ul>
+												</div>
+
+												<hr />
+
+												<div class="step-content pos-rel">
+													<div class="step-pane active" data-step="1">
+											
+										<form th:action="@{SaveOperateur}" method="post" th:object="${operateur}">
+										<div class="col-md-6 col-sm-6 col-xs-12">
+                                     <div class="form-group">
+                                     <label class="control-label">Matricule:</label>
+                                     <input type="text" th:field="*{opeMatricule}" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                     <div class="form-group">
+                                     <label class="control-label">Nom:</label>
+                                     <input type="text" th:field="*{opeNom}" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                     <div class="form-group">
+                                     <label class="control-label">contact:</label>
+                                     <input type="text" th:field="*{opeContact}" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                      <div class="form-group">
+                                     <label class="control-label">Etat civil:</label>
+                                     <input type="text" th:field="*{opeEtatCivil}" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                     </div>
+                                     <div class="col-md-6 col-sm-6 col-xs-12">
+                                      <div class="form-group">
+                                     <label class="control-label">Email:</label>
+                                     <input type="text" th:field="*{opeEmail}" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                      <div class="form-group">
+                                     <label class="control-label">Login:</label>
+                                      <input type="text" th:field="*{opeLogin}" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                      <div class="form-group">
+                                     <label class="control-label">Mot de pass:</label>
+                                     <input type="password" th:field="*{mdp}"  class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                     <div class="form-group">
+                                     <label class="control-label">Confimer:</label>
+                                     <input type="password" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                     <div>
+                                     
+                                     </div>
+                                     </div>
+                                     <div>
+                                     <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                     </div>
+                                     </form>
+													</div>
+
+													<div class="step-pane" data-step="2">
+														<div>
+											
+									<form th:action="@{SaveAssignation}" method="post" th:object="${assignation}">
+															<div class="col-md-6 col-sm-6 col-xs-12">
+                                       
+                                     <div class="form-group">
+                                     <label class="control-label">Operateur:</label>
+                                   <select class="chosen-select form-control" id="form-field-select-3" data-placeholder="Choose a State...">
+																<option value="">  </option>
+																<option value="AL">Operateur1</option>
+																<option value="AK">Operateur2</option>
+																<option value="AZ">Operateur3</option>
+																<option value="AR">Operateur4</option>
+																<option value="CA">Operateur5</option>
+															</select>                                     </div>
+                                    
+                                     <div class="form-group">
+                                     <label class="control-label">Date debut:</label>
+                                     <input type="date" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                     </div>
+                                     <div class="col-md-6 col-sm-6 col-xs-12">
+                                        
+                                     <div class="form-group">
+                                     <label class="control-label">Fonction:</label>
+                                     <select class="chosen-select form-control" id="form-field-select-3" data-placeholder="Choose a State...">
+																<option value="">  </option>
+																<option value="AL">Fonction1</option>
+																<option value="AK">Fonction2</option>
+																<option value="AZ">Fonction3</option>
+																<option value="AR">Fonction4</option>
+																<option value="CA">Fonction5</option>
+															</select>                                     </div>
+                                     <div class="form-group">
+                                     <label class="control-label">Date fin:</label>
+                                     <input type="date" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                     <div class="form-group">
+                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Statut </label>
+										<input name="switch-field-1" class="ace ace-switch ace-switch-4" type="checkbox" />
+										<span class="lbl" data-lbl="Actif&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inactif"></span>			
+									</div>	
+                                      <div>
+                                    
+                                     </div>
+                                     </div>
+                                     </form>
+														</div>
+													</div>
+
+													<div class="step-pane" data-step="3">
+														<div class="center">
+															test3
+														</div>
+													</div>
+
+													<div class="step-pane" data-step="4">
+														<div class="center">
+															<div class="alert alert-success">
+																<button type="button" class="close" data-dismiss="alert">
+																	<i class="ace-icon fa fa-times"></i>
+																</button>
+
+																<strong>
+																	<i class="ace-icon fa fa-check"></i>
+																	Felicitation!
+																</strong>
+
+																Votre inscription a ete effectuée avec succes.
+																<br/>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<hr />
+											<div class="wizard-actions">
+												<button class="btn btn-prev">
+													<i class="ace-icon fa fa-arrow-left"></i>
+													Precedent
+												</button>
+
+												<button class="btn btn-success btn-next" data-last="Terminer" type="submit">
+													Suivant
+													<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+												</button>
+											</div>
+										</div><!-- /.widget-main -->
+									</div>
+									</div>
+									
+                                 </div>
+
+										<!-- div.dataTables_borderWrap -->
+										<div>
+											
+										</div>
+									</div>
+								</div>
+								
+								<!-- FIN CONTENU PAGE -->
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+				
+</body>
+</html>

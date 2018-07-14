@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+layout:decorator="/template">
+<head>
+<meta charset="utf-8" />
+<title>Admin | Operateurs</title>
+</head>
+<body>
+<div class="main-content-inner" layout:fragment="content">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a th:href="@{/}">Accueil</a>
+								
+							</li>
+
+							<li>
+								<a href="#">Operateurs</a>
+							</li>
+							<li class="active">Liste des Operateurs</li>
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search" th:action="@{List}" method="get">
+								<span class="input-icon">
+									<input type="text" placeholder="Recherche ..." class="nav-search-input" name="motCle" th:value="${motCle}" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+							
+							
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">
+						<div data-th-replace="Fragments/Fr-setting::setting"><!-- setting containt --></div>
+
+						<div class="page-header">
+							<h1>Liste des Operateurs</h1>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- DEBUT CONTENU PAGE -->
+								
+                                <div class="row">
+									<div class="col-xs-12">
+										
+
+										<div class="clearfix">
+											<div class="pull-right tableTools-container"></div>
+										</div>
+										<div class="table-header">
+											Liste des operateurs
+										</div>
+
+										<!-- div.table-responsive -->
+
+										<!-- div.dataTables_borderWrap -->
+										<div>
+											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+												<thead>
+													<tr>
+														 <th>MATRICULE</th>
+                                                           <th>NOM</th>
+                                                          <th>CONTACT</th>
+                                                           <th>ETAT CIVIL</th>
+                                                           <th>EMAIL</th>
+                                                           <th>LOGIN</th>
+														<th>ACTIONS</th>
+													</tr>
+												</thead>
+
+												<tbody>
+													<tr th:each="o:${PageOperateurs.content}">													   
+														  <td th:text="${o.opeMatricule}"></td>  
+														  <td th:text="${o.opeNom}"></td>
+														  <td th:text="${o.opeContact}"></td>
+														  <td th:text="${o.opeEtatCivil}"></td>
+														  <td th:text="${o.opeEmail}"></td>
+														  <td th:text="${o.opeLogin}"></td>	
+														  <td>
+															<div class="hidden-sm hidden-xs action-buttons">
+																<a href="#my-modal" data-toggle="modal">
+									                                <i class="ace-icon fa fa-search-plus bigger-130"></i>
+								                                </a>
+																<a class="green" th:href="@{edit(id=${o.id})}">
+																	<i class="ace-icon fa fa-pencil bigger-130"></i>
+																</a>
+																<a class="red" onclick="return confirm('Etes vous sur de vouloir supprimer?')" th:href="@{supprimer(id=${o.id})}">
+																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
+																</a>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+                                 <div class="container">
+                                   <ul class="nav nav-pills">
+                                   <li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
+                                   <a th:text="${p}" th:href="@{List(page=${p},motCle=${motCle})}"></a>
+                                   </li>
+                                   </ul>
+                                 </div>
+                                 <div data-th-replace="Fragments/Fr-apercu::apercu"><!-- setting containt --></div>
+                                 								<!-- FIN CONTENU PAGE -->
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+				
+</body>
+</html>

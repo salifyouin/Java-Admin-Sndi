@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="/template">
+<head>
+<meta charset="utf-8" />
+<title>Admin | Assignation</title>
+</head>
+<body>
+<div class="main-content-inner" layout:fragment="content">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a th:href="@{/index}">Accueil</a>
+							</li>
+
+							<li>
+								<a href="#">Assignations</a>
+							</li>
+							<li class="active">Nouvelle Assignation</li>
+						</ul><!-- /.breadcrumb -->
+					</div>
+
+					<div class="page-content">
+						<div data-th-replace="Fragments/Fr-setting::setting"><!-- setting containt --></div>
+
+						<div class="page-header">
+							<h1>Nouvelle Assignation</h1>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+										<!-- div.table-responsive -->
+										<div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-2">
+								<div class="widget-box">
+								  <div class="widget-body">
+									<div class="table-header">
+											        Assignation d'un operateur a une Fonction
+										           </div>
+                                                 </div>	
+                                                 		
+												</div>
+                                                <div class="widget-main">
+									         <div class="panel-body">
+										<form th:action="@{SaveAssignation}" method="post" th:object="${assignation}">
+										<div class="col-md-6 col-sm-6 col-xs-12">
+                                     <div class="form-group">
+                                     <label class="control-label">Assignation courante:</label>
+                                     <input type="text" th:field="*{assCourant}" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                     <div class="form-group">
+                                     <label class="control-label">Operateur:</label>
+                                   <select class="chosen-select form-control" id="form-field-select-3" data-placeholder="Choose a State...">
+																<option value="">  </option>
+																<option value="AL">Operateur1</option>
+																<option value="AK">Operateur2</option>
+																<option value="AZ">Operateur3</option>
+																<option value="AR">Operateur4</option>
+																<option value="CA">Operateur5</option>
+															</select>                                     </div>
+                                     <div class="form-group">
+                                     <label class="control-label">Date debut:</label>
+                                     <input type="date" th:field="*{assDateDeb}" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                     </div>
+                                     <div class="col-md-6 col-sm-6 col-xs-12">
+                                      <div class="form-group">
+                                     <label class="control-label">Statut:</label>
+                                     <input type="text" th:field="*{assStatut}" class="form-control"/>
+                                     <span></span>
+                                    </div>
+                                     <div class="form-group">
+                                     <label class="control-label">Fonction:</label>
+                                     <select class="chosen-select form-control" id="form-field-select-3" data-placeholder="Choose a State...">
+																<option value="">  </option>
+																<option value="AL">Fonction1</option>
+																<option value="AK">Fonction2</option>
+																<option value="AZ">Fonction3</option>
+																<option value="AR">Fonction4</option>
+																<option value="CA">Fonction5</option>
+															</select>                                     </div>
+                                      <div class="form-group">
+                                     <label class="control-label">Date fin:</label>
+                                     <input type="date" th:field="*{assDateFin}" class="form-control"/>
+                                     <span></span>
+                                     </div>
+                                    
+                                     <div>
+                                     
+                                     </div>
+                                     </div>
+                                     <div>
+                                     <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                     </div>
+                                     </form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+											<hr />
+											
+											</div>
+									</div>
+										</div><!-- /.widget-main -->
+										
+								
+									
+                                 
+
+										<!-- div.dataTables_borderWrap -->
+										<div>
+											
+										</div>
+								
+								
+				
+</body>
+</html>
